@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "paginate_alphabetically"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{An easy way to paginate a list of ActiveRecord objects alphabetically by any given attribute.}
+    gem.description = %Q{Provides a list of available letters, and a way of fetching the records for each letter.}
     gem.email = "dev+gems@edendevelopment.co.uk"
     gem.homepage = "http://github.com/edendevelopment/paginate_alphabetically"
     gem.authors = ["Eden Development"]
