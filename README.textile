@@ -24,8 +24,7 @@ h3. View (haml example)
 bc. %ul.pagination
   - User.pagination_letters.each do |letter|
     %li= link_to letter, users_path(:letter => letter)
-
-bc. %ul.users
+%ul.users
   - @users.each do |user|
     %li= user.surname
 
@@ -34,7 +33,7 @@ h2. Testing
 
 The tests use a sqlite3 in-memory database to be able to run separately from your application.
 
-  ruby vendor/plugins/paginate_alphabetically/test/paginate_alphabetically_test.rb
+bc. rake test
   
 
 
