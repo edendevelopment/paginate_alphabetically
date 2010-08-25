@@ -10,7 +10,8 @@ begin
     gem.email = "dev+gems@edendevelopment.co.uk"
     gem.homepage = "http://github.com/edendevelopment/paginate_alphabetically"
     gem.authors = ["Eden Development"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "activerecord", ">= 2.3.5"
+    gem.add_development_dependency "sqlite3-ruby", "1.2.5"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

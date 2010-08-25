@@ -1,10 +1,14 @@
 require 'rubygems'
+require 'active_support'
+require 'active_support/test_case'
 require 'test/unit'
-require 'shoulda'
+require 'sqlite3'
+require 'active_record'
+require File.expand_path(File.join(File.dirname(__FILE__), '../init.rb'))
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'paginate_alphabetically'
+ActiveRecord::Base.establish_connection(
+  :adapter  => "sqlite3",
+  :database => ":memory:"
+)
 
-class Test::Unit::TestCase
-end
+load File.expand_path(File.join(File.dirname(__FILE__), 'db/schema.rb'))
