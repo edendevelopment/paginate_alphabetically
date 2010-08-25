@@ -7,27 +7,27 @@ h2. Example
 
 h3. Model
 
-  class User < ActiveRecord::Base
-    paginate_alphabetically :by => :surname
-  end
+bc. class User < ActiveRecord::Base
+  paginate_alphabetically :by => :surname
+end
 
 h3. Controller
 
-  class UsersController < ApplicationController
-    def index
-      @users = User.alphabetical_group(params[:letter])
-    end
+bc. class UsersController < ApplicationController
+  def index
+    @users = User.alphabetical_group(params[:letter])
   end
+end
 
 h3. View (haml example)
   
-  %ul.pagination
-    - User.pagination_letters.each do |letter|
-      %li= link_to letter, users_path(:letter => letter)
+bc. %ul.pagination
+  - User.pagination_letters.each do |letter|
+    %li= link_to letter, users_path(:letter => letter)
 
-  %ul.users
-    - @users.each do |user|
-      %li= user.surname
+bc. %ul.users
+  - @users.each do |user|
+    %li= user.surname
 
 
 h2. Testing
