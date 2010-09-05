@@ -6,7 +6,7 @@ module PaginateAlphabetically
 
   module ClassMethods
     def pagination_letters
-      all.sort_by{|obj| obj.send(@attribute)}.group_by {|group| group.send(@attribute)[0].chr.upcase}.keys
+      all.sort_by{|obj| obj.send(@attribute).upcase}.group_by {|group| group.send(@attribute)[0].chr.upcase}.keys
     end
 
     def first_letter
@@ -16,7 +16,7 @@ module PaginateAlphabetically
     end
 
     def alphabetical_group(letter = nil)
-      find(:all, :conditions => ["#{@attribute.to_s} LIKE ?", "#{letter || first_letter}%"], :order => @attribute)
+      find(:all, :conditions => ["#{@attribute.to_s.upcase} LIKE ?", "#{letter || first_letter}%"], :order => @attribute)
     end
   end
 end
