@@ -13,6 +13,14 @@ class PaginateAlphabeticallyTest < ActiveSupport::TestCase
     assert_equal 'F', Thing.first_letter
   end
 
+  test "first letter is alphabetical" do
+    Thing.create!(:name => ' o noes a space :(')
+    Thing.create!(:name => '1')
+    Thing.create!(:name => '®')
+    Thing.create!(:name => '$')
+    assert_equal 'F', Thing.first_letter
+  end
+
   test "first letter when there are no things" do
     Thing.destroy_all
     assert_equal 'A', Thing.first_letter
