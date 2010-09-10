@@ -9,7 +9,7 @@ module PaginateAlphabetically
 
     def safe(content)
       if content.respond_to?(:html_safe)
-        content.html_safe
+        return content.html_safe
       end
       content
     end
