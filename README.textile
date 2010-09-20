@@ -20,7 +20,7 @@ bc. class UsersController < ApplicationController
 end
 
 h3. View (haml example)
-  
+
 bc. = alphabetically_paginate(@users)
 %ul.users
   - @users.each do |user|
@@ -32,7 +32,18 @@ h2. Testing
 The tests use a sqlite3 in-memory database to be able to run separately from your application.
 
 bc. rake test
-  
+
+
+h2. Options
+
+Thanks to "hoverlover":http://github.com/hoverlover the alphabetically_paginate view helper can take an options hash which allows you to override the class if you don't want it to be 'pagination'. For example:
+
+bc. = alphabetically_paginate(@users, :class => 'user-pagination')
+
+
+h2. Contributing
+
+We welcome feedback, issues and especially pull requests. Please make sure your change is tested. Please do not update the VERSION file - we'll do that automatically. Thanks!
 
 
 Copyright (c) 2010 Eden Development, released under the MIT license
