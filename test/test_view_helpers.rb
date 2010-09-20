@@ -13,6 +13,7 @@ end
 class ViewHelperTest < ActiveSupport::TestCase
   def setup
     @result = alphabetically_paginate([Thing.create!(:name => 'a')])
+    @result_with_class = alphabetically_paginate([Thing.create!(:name => 'a')], :class => 'overridden-class')
   end
 
   test "it includes all the letters" do
@@ -39,5 +40,9 @@ class ViewHelperTest < ActiveSupport::TestCase
 
   test "it wraps the result in a ul" do
     assert @result.include?('<ul class="pagination">')
+  end
+
+  test "it allows the css class to be overridden" do
+    assert @result_with_class.include?('class="overridden-class"')
   end
 end
