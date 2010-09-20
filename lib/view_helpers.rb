@@ -1,10 +1,10 @@
 module PaginateAlphabetically
   module ViewHelpers
-    def alphabetically_paginate(collection)
+    def alphabetically_paginate(collection, options = {})
       return "" if collection.empty?
       available_letters = collection.first.class.pagination_letters
       content_tag(:ul, safe(alphabetical_links_to(available_letters)),
-                  :class => "pagination")
+                  :class => options[:class] || "pagination")
     end
 
     def safe(content)
