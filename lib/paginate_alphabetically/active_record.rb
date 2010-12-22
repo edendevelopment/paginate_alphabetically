@@ -1,4 +1,5 @@
 module PaginateAlphabetically
+  ALL_LETTERS = ('A'..'Z').to_a
   module ActiveRecord
     def paginate_alphabetically(params)
       @attribute = params[:by]
@@ -7,7 +8,6 @@ module PaginateAlphabetically
     end
 
     module ClassMethods
-      ALL_LETTERS = ('A'..'Z').to_a
       def pagination_letters
         return ALL_LETTERS if @paginate_alphabetically__show_all_letters
         all.sort_by{|obj| obj.send(@attribute).upcase}.group_by {|group| group.send(@attribute)[0].chr.upcase}.keys

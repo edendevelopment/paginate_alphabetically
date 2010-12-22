@@ -30,6 +30,10 @@ describe 'View helpers' do
     alphabetically_paginate([]).should == ''
   end
 
+  it "returns all the letters when the always_display flag is set" do
+    alphabetically_paginate([], :always_display => true).should_not == ''
+  end
+
   it "does not link to letters that have no content" do
     @result.include?('href="?letter=B"').should be_false
   end
