@@ -10,8 +10,15 @@ describe PaginateAlphabetically do
     Thing.destroy_all
   end
 
-  it '#pagination_letters picks out the correct letters from the set' do
-    Thing.pagination_letters.should == ['F', 'O', 'S', 'T']
+  context '#pagination_letters' do
+    it 'picks out the correct letters from the set' do
+      Thing.pagination_letters.should == ['F', 'O', 'S', 'T']
+    end
+
+    it 'shows all letters always when asked' do
+      Thing.paginate_alphabetically :by => :name, :show_all_letters => true
+      Thing.pagination_letters.should == ('A'..'Z').to_a
+    end
   end
 
   context "#first_letter" do

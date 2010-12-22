@@ -12,6 +12,7 @@ end
 
 describe 'View helpers' do
   before do
+    Thing.paginate_alphabetically :by => :name, :show_all_letters => false
     @result = alphabetically_paginate([Thing.create!(:name => 'a')])
   end
 

@@ -33,8 +33,13 @@ The tests use a sqlite3 in-memory database to be able to run separately from you
 
 bc. rake test
 
-
 h2. Options
+
+The initial model code will take a show_all_letters option, in order to skip the (slow) letter finding code:
+
+bc. class User < ActiveRecord::Base
+  paginate_alphabetically :by => :surname, :show_all_letters => true
+end
 
 Thanks to "hoverlover":http://github.com/hoverlover the alphabetically_paginate view helper can take an options hash which allows you to override the class if you don't want it to be 'pagination'. For example:
 
