@@ -17,7 +17,8 @@ module PaginateAlphabetically
       end
 
       def alphabetical_group(letter = nil)
-        find(:all, :conditions => ["#{@attribute.to_s} LIKE ?", "#{letter || first_letter}%"], :order => @attribute)
+        letter ||= first_letter
+        find(:all, :conditions => ["LOWER(#{@attribute.to_s}) LIKE ?", "#{letter.downcase}%"], :order => @attribute)
       end
     end
   end
