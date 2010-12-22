@@ -7,8 +7,13 @@ require 'active_support'
 require 'active_record'
 require 'action_view'
 
+require 'paginate_alphabetically/active_record'
+require 'paginate_alphabetically/view_helpers'
+
+ActiveRecord::Base.extend(PaginateAlphabetically::ActiveRecord)
+ActionView::Base.class_eval { include PaginateAlphabetically::ViewHelpers }
+
 include ActionView::Helpers
-require File.expand_path(File.join(File.dirname(__FILE__), '../init.rb'))
 
 ActiveRecord::Base.establish_connection(
   :adapter  => "sqlite3",
