@@ -20,3 +20,4 @@ pkg
 .bundle
 
 ## PROJECT::SPECIFIC
+.rvmrc
