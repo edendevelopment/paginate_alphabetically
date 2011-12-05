@@ -7,6 +7,7 @@ require 'active_support'
 require 'active_record'
 require 'action_view'
 
+require 'paginate_alphabetically/index'
 require 'paginate_alphabetically/active_record'
 require 'paginate_alphabetically/view_helpers'
 
@@ -27,4 +28,10 @@ class Thing < ActiveRecord::Base
 end
 
 class Numpty < ActiveRecord::Base
+end
+
+class Container < ActiveRecord::Base
+  belongs_to :thing
+
+  paginate_alphabetically :by => [:thing, :name]
 end

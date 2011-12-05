@@ -14,9 +14,7 @@ module PaginateAlphabetically
       end
 
       def first_letter
-        first_instance = find(:first, :order => @attribute, :conditions => ["#{@attribute.to_s} >= ?", 'a'])
-        return 'A' if first_instance.nil?
-        first_instance.send(@attribute)[0].chr.upcase
+        Index.for(@attribute, self).first_letter
       end
 
       def alphabetical_group(letter = nil)

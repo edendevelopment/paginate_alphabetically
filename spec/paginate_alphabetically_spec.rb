@@ -55,4 +55,14 @@ describe PaginateAlphabetically do
       end.should raise_error
     end
   end
+
+  context 'associated pagination' do
+    it 'is ' do
+      Container.create(:name => 'amazon', thing: Thing.where(:name => 'four').first)
+      Container.create(:name => 'nile', thing: Thing.where(:name => 'one').first)
+
+      Container.first_letter.should == 'F'
+    end
+
+  end
 end
