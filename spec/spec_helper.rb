@@ -34,4 +34,8 @@ class Container < ActiveRecord::Base
   belongs_to :thing
 
   paginate_alphabetically :by => [:thing, :name]
+
+  def full_name
+    [thing.name, name].join(" ")
+  end
 end
