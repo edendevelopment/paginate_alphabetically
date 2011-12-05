@@ -1,3 +1,4 @@
+require 'paginate_alphabetically/index'
 require 'paginate_alphabetically/active_record'
 require 'paginate_alphabetically/view_helpers'
 
