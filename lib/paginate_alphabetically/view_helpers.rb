@@ -7,8 +7,8 @@ module PaginateAlphabetically
         return "" if collection.empty?
         available_letters = collection.first.class.pagination_letters
       end
-      if options[:neumeric]
-	content_tag(:ul, safe(alphaneumeric_links_to(available_letters)),
+      if options[:numeric]
+	content_tag(:ul, safe(alphanumeric_links_to(available_letters)),
                   :class => options[:class] || "pagination")
       else
 	content_tag(:ul, safe(alphabetical_links_to(available_letters)),
@@ -23,7 +23,7 @@ module PaginateAlphabetically
       content
     end
 
-    def alphaneumeric_links_to(available_letters)
+    def alphanumeric_links_to(available_letters)
       (('0'..'9').to_a + ('A'..'Z').to_a).map do |letter|
         content_tag(:li, paginated_letter(available_letters, letter))
       end.join(" ")
