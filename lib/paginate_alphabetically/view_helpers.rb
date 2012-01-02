@@ -7,8 +7,13 @@ module PaginateAlphabetically
         return "" if collection.empty?
         available_letters = collection.first.class.pagination_letters
       end
-      content_tag(:ul, safe(alphabetical_links_to(available_letters)),
+      if options[:neumeric]
+	content_tag(:ul, safe(alphaneumeric_links_to(available_letters)),
                   :class => options[:class] || "pagination")
+      else
+	content_tag(:ul, safe(alphabetical_links_to(available_letters)),
+                  :class => options[:class] || "pagination")
+      end
     end
 
     def safe(content)

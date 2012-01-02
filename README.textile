@@ -51,6 +51,8 @@ Thanks to "hoverlover":http://github.com/hoverlover the alphabetically_paginate 
 
 bc. = alphabetically_paginate(@users, :class => 'user-pagination')
 
+bc. = alphabetically_paginate(@users, :class => 'user-pagination', :neumeric => true)
+
 h2. Contributing
 
 We welcome feedback, issues and especially pull requests. Please make sure your change is tested. Please do not update the VERSION file - we'll do that automatically. Thanks!
