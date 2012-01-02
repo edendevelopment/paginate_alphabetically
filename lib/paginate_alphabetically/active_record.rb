@@ -3,7 +3,7 @@ module PaginateAlphabetically
   module ActiveRecord
     def paginate_alphabetically(params)
       @attribute = params[:by]
-      @neumeric = params[:numeric]
+      @numeric = params[:numeric]
       @paginate_alphabetically__show_all_letters = params[:show_all_letters] || false
       self.extend ClassMethods
     end
