@@ -1,8 +1,9 @@
 module PaginateAlphabetically
-  ALL_LETTERS = ('A'..'Z').to_a
+  ALL_LETTERS = (0..9).to_a + ('A'..'Z').to_a
   module ActiveRecord
     def paginate_alphabetically(params)
       @attribute = params[:by]
+      @neumeric = params[:neumeric]
       @paginate_alphabetically__show_all_letters = params[:show_all_letters] || false
       self.extend ClassMethods
     end
@@ -14,8 +15,9 @@ module PaginateAlphabetically
       end
 
       def first_letter
-        first_instance = find(:first, :order => @attribute, :conditions => ["#{@attribute.to_s} >= ?", 'a'])
-        return 'A' if first_instance.nil?
+        f_letter = @neumeric ? '0' : 'a'
+        first_instance = find(:first, :order => @attribute, :conditions => ["#{@attribute.to_s} >= ?", f_letter])
+        return f_letter if first_instance.nil?
         first_instance.send(@attribute)[0].chr.upcase
       end
 
