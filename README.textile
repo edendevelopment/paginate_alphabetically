@@ -41,10 +41,15 @@ bc. class User < ActiveRecord::Base
   paginate_alphabetically :by => :surname, :show_all_letters => true
 end
 
+To use alphanumeric functionality use neumeric => true
+
+bc. class User < ActiveRecord::Base
+  paginate_alphabetically :by => :surname, :neumeric => true
+end
+
 Thanks to "hoverlover":http://github.com/hoverlover the alphabetically_paginate view helper can take an options hash which allows you to override the class if you don't want it to be 'pagination'. For example:
 
 bc. = alphabetically_paginate(@users, :class => 'user-pagination')
-
 
 h2. Contributing
 
