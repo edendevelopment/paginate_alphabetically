@@ -24,7 +24,7 @@ module PaginateAlphabetically
     end
 
     def alphaneumeric_links_to(available_letters)
-      ((0..9).to_a + ('A'..'Z'_.to_a).map do |letter|
+      ((0..9).to_a + ('A'..'Z'.to_a).map do |letter|
         content_tag(:li, paginated_letter(available_letters, letter))
       end.join(" ")
     end
