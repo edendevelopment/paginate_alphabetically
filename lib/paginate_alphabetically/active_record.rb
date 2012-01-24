@@ -3,6 +3,7 @@ module PaginateAlphabetically
   module ActiveRecord
     def paginate_alphabetically(params)
       @attribute = params[:by]
+      @klass = params[:class]
       @numeric = params[:numeric]
       @paginate_alphabetically__show_all_letters = params[:show_all_letters] || false
       self.extend ClassMethods
@@ -23,7 +24,7 @@ module PaginateAlphabetically
 
       def alphabetical_group(letter = nil)
         letter ||= first_letter
-        find(:all, :conditions => ["LOWER(#{@attribute.to_s}) LIKE ?", "#{letter.downcase}%"], :order => @attribute)
+        find(:all, :conditions => ["LOWER(#{@attribute.to_s}) LIKE ?", "#{letter.downcase}%"], :order => "#{@klass + '.' + @attribute}")
       end
     end
   end
