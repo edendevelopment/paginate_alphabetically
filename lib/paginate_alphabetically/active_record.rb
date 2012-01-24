@@ -17,14 +17,14 @@ module PaginateAlphabetically
 
       def first_letter
         f_letter = @numeric ? '0' : 'a'
-        first_instance = find(:first, :order => @attribute, :conditions => ["#{@attribute.to_s} >= ?", f_letter])
+        first_instance = find(:first, :order => "#{@klass + '.' + @attribute}", :conditions => ["#{@klass.to_s + '.' + @attribute.to_s} >= ?", f_letter])
         return f_letter if first_instance.nil?
         first_instance.send(@attribute)[0].chr.upcase
       end
 
       def alphabetical_group(letter = nil)
         letter ||= first_letter
-        find(:all, :conditions => ["LOWER(#{@attribute.to_s}) LIKE ?", "#{letter.downcase}%"], :order => "#{@klass + '.' + @attribute}")
+        find(:all, :conditions => ["LOWER(#{@klass.to_s +'.'+@attribute.to_s}) LIKE ?", "#{letter.downcase}%"], :order => "#{@klass + '.' + @attribute}")
       end
     end
   end
