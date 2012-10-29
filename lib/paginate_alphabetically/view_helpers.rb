@@ -20,7 +20,9 @@ module PaginateAlphabetically
 
     def alphabetical_links_to(available_letters)
       ('A'..'Z').map do |letter|
-        content_tag(:li, paginated_letter(available_letters, letter))
+        classes = ""
+        classes += " gap" unless available_letters.include?(letter)
+        content_tag(:li, paginated_letter(available_letters, letter), :class => classes)
       end.join(" ")
     end
 
