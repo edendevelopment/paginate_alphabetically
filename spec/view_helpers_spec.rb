@@ -7,6 +7,10 @@ module PaginateAlphabetically
     def request
       stub(:path => '')
     end
+
+    def params
+      { :letter => '' }
+    end
   end
 end
 
@@ -39,7 +43,7 @@ describe 'View helpers' do
   end
 
   it "wraps the letters as list items" do
-    @result.include?('<li>B</li>').should be_true
+    @result.include?('<li class=" gap">B</li>').should be_true
   end
 
   it "wraps the result in a ul" do
