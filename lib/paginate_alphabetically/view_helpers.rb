@@ -21,13 +21,20 @@ module PaginateAlphabetically
     def alphabetical_links_to(available_letters)
       ('A'..'Z').map do |letter|
         classes = ""
+        classes += " current" if current_letter(available_letters) == letter
         classes += " gap" unless available_letters.include?(letter)
         content_tag(:li, paginated_letter(available_letters, letter), :class => classes)
       end.join(" ")
     end
 
+    def current_letter(available_letters)
+      params[:letter].upcase || available_letters.first
+    end
+
     def paginated_letter(available_letters, letter)
-      if available_letters.include?(letter)
+      if current_letter(available_letters) == letter
+        letter
+      elsif available_letters.include?(letter)
         link_to(letter, "#{request.path}?letter=#{letter}")
       else
         letter
