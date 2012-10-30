@@ -28,7 +28,7 @@ module PaginateAlphabetically
     end
 
     def current_letter(available_letters)
-      params[:letter].upcase || available_letters.first
+      params[:letter] || available_letters.first
     end
 
     def paginated_letter(available_letters, letter)
