@@ -7,6 +7,5 @@ group :development do
   gem 'actionpack'
   gem 'sqlite3-ruby', '= 1.2.5'
   gem 'rspec', '~> 2.0.0'
-  gem 'jeweler'
 end
 
