@@ -1,13 +1,13 @@
 Gem::Specification.new do |gem|
   gem.name = %q{paginate_alphabetically}
-  gem.version = "0.3.3"
+  gem.version = "0.4"
 
   gem.required_rubygems_version = Gem::Requirement.new(">= 0") if gem.respond_to? :required_rubygems_version=
-  gem.authors = ["Eden Development"]
-  gem.date = %q{2010-12-22}
+  gem.authors = ["Steve Tooke", "Aimee Daniells", "Chris Parsons", "Jamie Cobbett"]
+  gem.date = %q{2012-11-10}
   gem.summary = %q{An easy way to paginate a list of ActiveRecord objects alphabetically by any given attribute.}
   gem.description = %q{Provides a list of available letters, and a way of fetching the records for each letter.}
-  gem.email = %q{dev+paginate_alphabetically@edendevelopment.co.uk}
+  gem.email = %q{chris+paginate_alphabetically@thinkcodelearn.com}
   gem.extra_rdoc_files = [
     "LICENSE",
      "README.textile"
