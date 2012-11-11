@@ -7,13 +7,17 @@ module PaginateAlphabetically
     def request
       stub(:path => '')
     end
+
+    def params
+      { :letter => 'B' }
+    end
   end
 end
 
 describe 'View helpers' do
   before do
     Thing.paginate_alphabetically :by => :name, :show_all_letters => false
-    @result = alphabetically_paginate([Thing.create!(:name => 'a')])
+    @result = alphabetically_paginate([Thing.create!(:name => 'a'), Thing.create!(:name => 'b')])
   end
 
   it "includes all the letters" do
@@ -35,11 +39,15 @@ describe 'View helpers' do
   end
 
   it "does not link to letters that have no content" do
-    @result.include?('href="?letter=B"').should be_false
+    @result.include?('href="?letter=C"').should be_false
+  end
+
+  it "wraps the current letter as a list item" do
+    @result.include?('<li class=" current">B</li>').should be_true
   end
 
   it "wraps the letters as list items" do
-    @result.include?('<li>B</li>').should be_true
+    @result.include?('<li class=" gap">C</li>').should be_true
   end
 
   it "wraps the result in a ul" do
