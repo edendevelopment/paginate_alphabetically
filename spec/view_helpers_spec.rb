@@ -10,7 +10,10 @@ module PaginateAlphabetically
   end
 end
 
+
 describe 'View helpers' do
+  let(:params) { {letter: 'A'}}
+
   before do
     Thing.paginate_alphabetically :by => :name, :show_all_letters => false
     @result = alphabetically_paginate([Thing.create!(:name => 'a')])
@@ -23,7 +26,11 @@ describe 'View helpers' do
   end
 
   it "links to the available letters" do
-    @result.include?('<a href="?letter=A">').should be_true
+    @result.include?('<a href="?letter=A"').should be_true
+  end
+
+  it "adds a class to the current letter" do
+    @result.include?('selected A').should be_true
   end
 
   it "returns nothing when the collection is empty" do
