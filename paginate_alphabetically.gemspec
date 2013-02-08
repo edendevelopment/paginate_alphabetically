@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name = %q{paginate_alphabetically}
-  gem.version = "0.3.3"
+  gem.version = "0.3.4"
 
   gem.required_rubygems_version = Gem::Requirement.new(">= 0") if gem.respond_to? :required_rubygems_version=
   gem.authors = ["Eden Development"]
