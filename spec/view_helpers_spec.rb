@@ -5,7 +5,7 @@ include PaginateAlphabetically::ViewHelpers
 module PaginateAlphabetically
   module ViewHelpers
     def request
-      stub(:path => '')
+      double(:path => '')
     end
   end
 end
@@ -21,16 +21,16 @@ describe 'View helpers' do
 
   it "includes all the letters" do
     ('A'..'Z').each do |letter|
-      @result.include?(letter).should be_true
+      @result.include?(letter).should be_truthy
     end
   end
 
   it "links to the available letters" do
-    @result.include?('<a href="?letter=A"').should be_true
+    @result.include?('href="?letter=A"').should be_truthy
   end
 
   it "adds a class to the current letter" do
-    @result.include?('selected A').should be_true
+    @result.include?('selected A').should be_truthy
   end
 
   it "returns nothing when the collection is empty" do
@@ -42,19 +42,19 @@ describe 'View helpers' do
   end
 
   it "does not link to letters that have no content" do
-    @result.include?('href="?letter=B"').should be_false
+    @result.include?('href="?letter=B"').should be_falsey
   end
 
   it "wraps the letters as list items" do
-    @result.include?('<li>B</li>').should be_true
+    @result.include?('<li>B</li>').should be_truthy
   end
 
   it "wraps the result in a ul" do
-    @result.include?('<ul class="pagination">').should be_true
+    @result.include?('<ul class="pagination">').should be_truthy
   end
 
   it "allows the css class to be overridden" do
     result_with_class = alphabetically_paginate([Thing.create!(:name => 'a')], :class => 'overridden-class')
-    result_with_class.include?('class="overridden-class"').should be_true
+    result_with_class.include?('class="overridden-class"').should be_truthy
   end
 end

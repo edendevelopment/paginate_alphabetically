@@ -25,7 +25,7 @@ module PaginateAlphabetically
 
     private
     def first_instance
-      @model.find(:first, :order => attribute, :conditions => ["#{attribute.to_s} >= ?", 'a'])
+      @model.where(["#{attribute.to_s} >= ?", 'a']).order(attribute).first
     end
 
     def attribute_value(start_object = first_instance)

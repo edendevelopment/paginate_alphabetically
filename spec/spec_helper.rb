@@ -21,6 +21,24 @@ ActiveRecord::Base.establish_connection(
   :database => ":memory:"
 )
 
+RSpec.configure do |config|
+  # == Mock Framework
+  #
+  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
+  #
+  # config.mock_with :mocha
+  # config.mock_with :flexmock
+  # config.mock_with :rr
+  config.mock_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+
+end
+
 load File.expand_path(File.join(File.dirname(__FILE__), 'db/schema.rb'))
 
 class Thing < ActiveRecord::Base
